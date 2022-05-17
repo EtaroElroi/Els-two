@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+  <script>
+    "use strict";
+
+    let a = +prompt('Введи первое число'); // Первое число
+    let b = +prompt('Введи второе число'); // Второе число
+    const operation = prompt('Введи "+", "-", "*", "/"'); // Знак операции
+
+    console.log(`Операция чисел ${a} и ${b} равна ${mathOperation(a, b, operation)}`);
+
+    // Сложение
+    function countAddition(a, b) {
+      return a + b;
+    }
+
+    // Вычитание
+    function countSubtraction(a, b) {
+      if (a < b && b > a) {
+        return 'числу не по условию. Нельзя вычесть из меньшего большее.';
+      } else if (a > b) {
+        return a - b;
+      } else if (a == b) {
+        return 0;
+      }
+    }
+
+    // Умножение
+    function countMultiplication(a, b) {
+      return a * b;
+    }
+
+    // Деление
+    function countDivision(a, b) {
+      if (notZero(a, b) === 'Деление на 0 невозможно') {
+        return 'числу не по условию. Ошибка. Деление на 0 невозможно.';
+      } else
+        return a / b;
+    }
+
+    // Проверка на ноль
+    function notZero(a, b) {
+      if (b === 0 || isNaN(b)) {
+        return 'Деление на 0 невозможно';
+      } else return a / b;
+    }
+
+    // Математические операции
+    function mathOperation(a, b, operation) {
+      if (operation === '+') {
+        return countAddition(a, b);
+      } else if (operation === '-') {
+        return countSubtraction(a, b);
+      } else if (operation === '*') {
+        return countMultiplication(a, b);
+      } else if (operation === '/') {
+        return countDivision(a, b);
+      } else return 'Nan';
+    }
+  </script>
+</body>
+
+</html>

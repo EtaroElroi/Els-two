@@ -10,46 +10,65 @@
   <!--
 Обязательное задание.
 
-Необходимо вывести в консоль значения выражений:
-10 + 10 + "10"
-10 + "10" + 10
-10 + 10 + +"10"
-10 / -""
-10 / +"2,5"
-В этих выражениях нет опечаток, вам их нужно скопировать и вывести в консоль.
-
-Над каждым выводом в консоль необходимо объяснить почему мы получаем такой
-результат.
-
-Объяснения пишите в таком формате:
-/*
-1. 4 умножаем на 2 получаем 8.
-2. 3 минус 8 получаем -5.
-3. С помощью console.log выводим число -5 в консоль.
-*/
-console.log(3 - 4 * 2);
+Необходимо попросить пользователя ввести два числа в переменные `a` и `b`.
+Необходимо вывести в консоль один результат из следующих проверок:
+1. Если оба числа в переменных `a` и `b` положительные, вывести разность
+чисел `a` и `b`, а именно, вычесть из переменной `a` значение переменной `b`.
+2. Если оба числа в переменных `a` и `b` отрицательные, вывести произведение
+чисел `a` и `b`.
+3. Если числа в переменных `a` и `b` разных знаков, вывести сумму чисел
+`a` и `b`.
+В остальных случаях программа не должна ничего выводить.
 -->
   <script>
     "use strict";
 
-    let numFirst = 10;
-    let numSecond = 10;
-    let numThird = "10";
-    let numFourth = +"2,5";
-    let numFifth = -"";
-    let numSixth = +"10";
+    let a = +prompt('Введи первое число');
+    let b = +prompt('Введи второе число');
 
-    let sumFirst = numFirst + numSecond + numThird;
-    let sumSecond = numFirst + numThird + numSecond;
-    let sumThird = numFirst + numSecond + numSixth;
-    let sumFourth = numFirst / numFifth;
-    let sumFifth = numFirst / numFourth;
-    console.log('Значение выражения: ' + sumFirst); /* Идёт сложение двух первых переменных - получаем 20, после чего она превращается в строку и складывается с другой. */
-    console.log('Значение выражения: ' + sumSecond); /* Складывает первое со вторым приравнивая в стрингу получая одну строку. Псоле чего строка + число = строка */
-    console.log('Значение выражения: ' + sumThird); /* Получаем 30, так как унарный + это целое чило */
-    console.log('Значение выражения: ' + sumFourth); /* Тоже самое что поделить на -0 */
-    console.log('Значение выражения: ' + sumFifth); /* Нан, потому что число через точку пишется */
+    const result = countDifferenceOfNumbers();
 
+    console.log(`Разность чисел ${a} и ${b} равна ${result}`)
+
+    function countDifferenceOfNumbers(countNumber) {
+      if (a > 0 && b > 0) {
+        return a - b;
+      } else return 'числу не по условию';
+    }
+  </script>
+
+  <script>
+    "use strict";
+
+    let a = +prompt('Введи первое число');
+    let b = +prompt('Введи второе число');
+
+    const result = countDifferenceOfNumbers();
+
+    console.log(`Произведение чисел ${a} и ${b} равно ${result}`);
+
+    function countDifferenceOfNumbers(countNumber) {
+      if (a < 0 && b < 0) {
+        return a * b;
+      } else return 'числу не по условию';
+    }
+  </script>
+
+  <script>
+    "use strict";
+
+    let a = +prompt('Введи первое число');
+    let b = +prompt('Введи второе число');
+
+    const result = countDifferenceOfNumbers();
+
+    console.log(`Сумма чисел ${a} и ${b} равна ${result}`)
+
+    function countDifferenceOfNumbers(countNumber) {
+      if (a < 0 || b < 0) {
+        return a + b;
+      } else return 'числу не по условию';
+    }
   </script>
 </body>
 
