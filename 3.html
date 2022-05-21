@@ -10,46 +10,35 @@
   <!--
 Обязательное задание.
 
-Необходимо вывести в консоль значения выражений:
-10 + 10 + "10"
-10 + "10" + 10
-10 + 10 + +"10"
-10 / -""
-10 / +"2,5"
-В этих выражениях нет опечаток, вам их нужно скопировать и вывести в консоль.
-
-Над каждым выводом в консоль необходимо объяснить почему мы получаем такой
-результат.
-
-Объяснения пишите в таком формате:
-/*
-1. 4 умножаем на 2 получаем 8.
-2. 3 минус 8 получаем -5.
-3. С помощью console.log выводим число -5 в консоль.
-*/
-console.log(3 - 4 * 2);
+Дан массив products, необходимо цену каждого продукта уменьшить на 15% используя
+метод forEach.
 -->
   <script>
     "use strict";
 
-    let numFirst = 10;
-    let numSecond = 10;
-    let numThird = "10";
-    let numFourth = +"2,5";
-    let numFifth = -"";
-    let numSixth = +"10";
+    const products = [
+      {
+        id: 3,
+        price: 200,
+      },
+      {
+        id: 4,
+        price: 900,
+      },
+      {
+        id: 1,
+        price: 1000,
+      },
+    ];
 
-    let sumFirst = numFirst + numSecond + numThird;
-    let sumSecond = numFirst + numThird + numSecond;
-    let sumThird = numFirst + numSecond + numSixth;
-    let sumFourth = numFirst / numFifth;
-    let sumFifth = numFirst / numFourth;
-    console.log('Значение выражения: ' + sumFirst); /* Идёт сложение двух первых переменных - получаем 20, после чего она превращается в строку и складывается с другой. */
-    console.log('Значение выражения: ' + sumSecond); /* Складывает первое со вторым приравнивая в стрингу получая одну строку. Псоле чего строка + число = строка */
-    console.log('Значение выражения: ' + sumThird); /* Получаем 30, так как унарный + это целое чило */
-    console.log('Значение выражения: ' + sumFourth); /* Тоже самое что поделить на -0 */
-    console.log('Значение выражения: ' + sumFifth); /* Нан, потому что число через точку пишется */
+    products.forEach(function (element, index, price) {
+      console.log(`Цена ${element.id} продукта равна ${reducePrice(element.price)}`);
+    });
 
+
+    function reducePrice(price) {
+      return price - (price * 15 / 100);
+    }
   </script>
 </body>
 
