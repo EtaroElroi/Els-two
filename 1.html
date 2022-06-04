@@ -10,24 +10,83 @@
   <!--
 Обязательное задание.
 
-Необходимо с помощью цикла for вывести следующие 11 строк в консоль:
-0 – это ноль
-1 – нечетное число
-2 – четное число
-3 – нечетное число
-…
-10 – четное число
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для продукта.
+Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
+При создании объекта от функции-конструктора/класса необходимо передавать имя
+и цену товара, эта информация должна быть сохранена в объекте.
+Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
+метод должен уменьшать стоимость продукта на 25%.
+Необходимо продемонстрировать работу с объектом (в свободной форме).
 -->
   <script>
     "use strict";
 
-    let countDivisionWithRemains = 'это ноль';
-    for (let i = 0; i < 12; i++) {
-      console.log(`${i} - ${countDivisionWithRemains}`)
-      if (i % 1 === 0 && i % 2 !== 0) {
-        countDivisionWithRemains = 'четное число';
-      } else countDivisionWithRemains = 'нечетное число';
+    let product = {
+      standardPrice: 140,
+      discountPrice: 0
+    };
+
+    // es5
+
+    function ProductES5(pineapple) {
+      this.pineapple = pineapple;
     }
+
+    ProductES5.prototype.article = function () {
+      console.log(this.pineapple);
+    };
+
+    function Discount(pineapple, discount) {
+      ProductES5.call(this, pineapple);
+      this.discount = discount;
+    }
+
+    Discount.prototype = Object.create(ProductES5.prototype);
+    Discount.prototype.constructor = Discount;
+
+    Discount.prototype.make25Discount = function () {
+      product.discountPrice =
+        product.standardPrice - (product.standardPrice * 25 / 100);
+      this.discount = product.discountPrice;
+      console.log(`Цена со скидкой: ${this.discount}`);
+    };
+
+    let price = new Discount(`Обычная цена: ${product.standardPrice}`);
+    price.article();
+    price.make25Discount();
+
+    // es6
+
+    class ProductES6 {
+      constructor(pineapple) {
+        this.pineapple = pineapple;
+      }
+
+      article() {
+        console.log(this.pineapple);
+      }
+    }
+
+    class Discount extends ProductES6 {
+      constructor(pineapple, discount) {
+        super(pineapple);
+        this.discount = discount;
+      }
+
+      make25Discount() {
+        product.discountPrice =
+          product.standardPrice - (product.standardPrice * 25 / 100);
+        this.discount = product.discountPrice;
+        console.log(`Цена со скидкой: ${this.discount}`);
+      }
+    }
+
+    let price = new Discount(`Обычная цена: ${product.standardPrice}`);
+    price.article();
+    price.make25Discount();
+
+
   </script>
 </body>
 
