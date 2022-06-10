@@ -10,81 +10,90 @@
   <!--
 Обязательное задание.
 
-Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
-Необходимо создать функцию-конструктор/класс для продукта.
-Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
-При создании объекта от функции-конструктора/класса необходимо передавать имя
-и цену товара, эта информация должна быть сохранена в объекте.
-Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
-метод должен уменьшать стоимость продукта на 25%.
-Необходимо продемонстрировать работу с объектом (в свободной форме).
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
+стирать, код с решением задачи пишем под комментарием.
 -->
+
+  <a href="#" class="card-link">Card link</a>
+  <a href="#" class="card-link">Another link</a>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title" data-number="100">Card title</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p class="card-text" data-number="50">
+        Some quick example text to build on the card title and make up the bulk of the card's
+        content.
+      </p>
+      <a href="#" id="super_link" class="card-link">Card link</a>
+      <a href="#" class="card-link" data-number="50">Another link</a>
+    </div>
+  </div>
+
   <script>
     "use strict";
 
-    let product = {
-      standardPrice: 140,
-      discountPrice: 0
-    };
+    /*
+    1. Найти по id, используя getElementById, элемент с id равным "super_link" и
+    вывести этот элемент в консоль.
+     */
 
-    // es5
+    console.log(document.getElementById('super_link'));
 
-    function ProductES5(pineapple) {
-      this.pineapple = pineapple;
-    }
 
-    ProductES5.prototype.article = function () {
-      console.log(this.pineapple);
-    };
+    /*
+    2. Внутри всех элементов на странице, которые имеют класс "card-link",
+    поменяйте текст внутри элемента на "ссылка".
+     */
 
-    function Discount(pineapple, discount) {
-      ProductES5.call(this, pineapple);
-      this.discount = discount;
-    }
+    document
+      .querySelectorAll('.card-link')
+      .forEach(element => element.textContent = 'cсылка');
 
-    Discount.prototype = Object.create(ProductES5.prototype);
-    Discount.prototype.constructor = Discount;
 
-    Discount.prototype.make25Discount = function () {
-      product.discountPrice =
-        product.standardPrice - (product.standardPrice * 25 / 100);
-      this.discount = product.discountPrice;
-      console.log(`Цена со скидкой: ${this.discount}`);
-    };
+    /*
+    3. Найти все элементы на странице с классом "card-link", которые лежат в
+    элементе с классом "card-body" и вывести полученную коллекцию в консоль.
+     */
 
-    let price = new Discount(`Обычная цена: ${product.standardPrice}`);
-    price.article();
-    price.make25Discount();
+    console.log(document.querySelectorAll('.card-body .card-link'));
 
-    // es6
 
-    class ProductES6 {
-      constructor(pineapple) {
-        this.pineapple = pineapple;
-      }
+    /*
+    4. Найти первый попавшийся элемент на странице у которого есть атрибут
+    data-number со значением 50 и вывести его в консоль.
+     */
 
-      article() {
-        console.log(this.pineapple);
-      }
-    }
+    console.log(document.querySelector('[data-number = "50"]'));
 
-    class Discount extends ProductES6 {
-      constructor(pineapple, discount) {
-        super(pineapple);
-        this.discount = discount;
-      }
 
-      make25Discount() {
-        product.discountPrice =
-          product.standardPrice - (product.standardPrice * 25 / 100);
-        this.discount = product.discountPrice;
-        console.log(`Цена со скидкой: ${this.discount}`);
-      }
-    }
+    /*
+    5. Выведите содержимое тега title в консоль.
+     */
 
-    let price = new Discount(`Обычная цена: ${product.standardPrice}`);
-    price.article();
-    price.make25Discount();
+    console.log(document.title);
+
+    /*
+    6. Получите элемент с классом "card-title" и выведите его родительский узел
+    в консоль.
+     */
+
+    console.log(document.querySelector('.card-title').parentNode);
+
+    /*
+    7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный
+    тег в начало элемента, который имеет класс "card".
+     */
+
+    const pTag = document.createElement('p');
+    pTag.textContent = 'Привет';
+    document.querySelector('.card').prepend(pTag);
+
+    /*
+    8. Удалите тег h6 на странице.
+     */
+
+    document.querySelector('h6').remove();
 
 
   </script>
