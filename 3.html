@@ -3,52 +3,90 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Homework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
+  <style>
+    i {
+      font-size: 50px;
+    }
+
+    .golden {
+      color: gold;
+    }
+  </style>
 </head>
 
 <body>
   <!--
 Обязательное задание.
 
-Необходимо вывести в консоль значения выражений:
-10 + 10 + "10"
-10 + "10" + 10
-10 + 10 + +"10"
-10 / -""
-10 / +"2,5"
-В этих выражениях нет опечаток, вам их нужно скопировать и вывести в консоль.
-
-Над каждым выводом в консоль необходимо объяснить почему мы получаем такой
-результат.
-
-Объяснения пишите в таком формате:
-/*
-1. 4 умножаем на 2 получаем 8.
-2. 3 минус 8 получаем -5.
-3. С помощью console.log выводим число -5 в консоль.
-*/
-console.log(3 - 4 * 2);
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
+стирать, код с решением задачи пишем под комментарием.
 -->
+
+  <div class="stars_container">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </div>
+
   <script>
     "use strict";
 
-    let numFirst = 10;
-    let numSecond = 10;
-    let numThird = "10";
-    let numFourth = +"2,5";
-    let numFifth = -"";
-    let numSixth = +"10";
+    /*
+    1. При наведении на любую из звезд, данной звезде должен ставиться класс
+    golden, также такой класс должен ставиться всем звездам до нее слева.
+    */
 
-    let sumFirst = numFirst + numSecond + numThird;
-    let sumSecond = numFirst + numThird + numSecond;
-    let sumThird = numFirst + numSecond + numSixth;
-    let sumFourth = numFirst / numFifth;
-    let sumFifth = numFirst / numFourth;
-    console.log('Значение выражения: ' + sumFirst); /* Идёт сложение двух первых переменных - получаем 20, после чего она превращается в строку и складывается с другой. */
-    console.log('Значение выражения: ' + sumSecond); /* Складывает первое со вторым приравнивая в стрингу получая одну строку. Псоле чего строка + число = строка */
-    console.log('Значение выражения: ' + sumThird); /* Получаем 30, так как унарный + это целое чило */
-    console.log('Значение выражения: ' + sumFourth); /* Тоже самое что поделить на -0 */
-    console.log('Значение выражения: ' + sumFifth); /* Нан, потому что число через точку пишется */
+    document.querySelector('.stars_container')
+      .addEventListener('mouseover', event => {
+        if (!event.target.classList.contains('fas')) {
+          return;
+        }
+        let stars = event.target;
+        do {
+          stars.classList.add('golden');
+          stars = stars.previousElementSibling;
+        } while (stars);
+      });
+
+
+    /*
+    2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
+    задания должны быть удалены.
+     */
+
+    document.querySelector('.stars_container')
+      .addEventListener('mouseout', event => {
+        if (!event.target.classList.contains('fas')) {
+          return;
+        }
+        let stars = event.target;
+        do {
+          stars.classList.remove('golden');
+          stars = stars.previousElementSibling;
+        } while (stars);
+      });
+
+
+    /*
+    3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать
+    звезды (временно могут становиться черными). Почему так? Напишите словами.
+    Можем ли мы это исправить? Если да, то предложите решение.
+    */
+
+    document.querySelector('.stars_container')
+      .childNodes.forEach(node => {
+        if (node.nodeName === 'text') {
+          node.remove();
+        }
+      });
+
 
   </script>
 </body>
