@@ -2,38 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>products</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DateApp</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+    integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./src/main.js" type="module"></script>
+  <link rel="stylesheet" href="./style.css" />
+
 </head>
 
 <body>
-    <header class="header"></header>
-    <main class="main-wrap">
-        <div class="goods-list visually-hidden"></div>
-        <div class="shopping-cart__wrap">
-            <div class="shopping-cart__make-order">
-                <div class="shopping-cart__make-order-wrap">
-                    <div class="shopping-cart__make-order-sub">
-                    </div>
-                    <div class="shopping-cart__make-order-total">
-                        <p class="shopping-cart__make-order-total--text">total price</p>
-                        <p class="shopping-cart__make-order-total--price">$</p>
-                    </div>
-                    <div class="shopping-cart__button-wrap ">
-                        <button href="#" class="product__button-catalog-link">Product List</button>
-                        <div class="cart-block visually-hidden"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer class="product__button-catalog">
-        <button href="catalog.html" class="shopping-cart__button-link">Card</button>
-    </footer>
-    <script src="script.js"></script>
+  <a href="./sound/whatsapp_iphone.mp3"></a>
+
+  <fieldset class="field-checkbox">
+    <label class="checkbox">
+      <input class="input-checkbox" type="checkbox" />
+      <i class="flag"></i>
+      <span class="text">Переключиться на таймер</span>
+    </label>
+  </fieldset>
+
+  <form id="datecalc">
+
+    <h3>Калькулятор дат</h3>
+
+    <label>
+      <strong>Первая дата:</strong>
+      <input type="date" name="firstDate" />
+    </label>
+
+    <label>
+      <strong>Вторая дата:</strong>
+      <input type="date" name="secondDate" />
+    </label>
+
+    <button type="submit">Расчитать промежуток</button>
+
+    <p id="datecalc__result"></p>
+  </form>
+
+  <form id="timer" class="hidden">
+
+    <h3>Таймер</h3>
+
+    Установить таймер:
+    <input type="text" class="timer_time_install" placeholder="0"></input>
+    <div class="timer_time"></div>
+
+    <button data-test="start" class="timer_btn_start">
+      СТАРТ
+    </button>
+
+    <button class="timer_btn_stop" disabled="disabled">
+      СТОП
+    </button>
+    </div>
+  </form>
+
+  <p id="demo"></p>
 </body>
 
 </html>
