@@ -1,0 +1,41 @@
+{
+  "name": "2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "del dist && webpack --mode development",
+    "watch": "webpack -w",
+    "serve": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dr1pryaha/GB_Web-project_2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dr1pryaha/GB_Web-project_2/issues"
+  },
+  "homepage": "https://github.com/dr1pryaha/GB_Web-project_2#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.0",
+    "babel-loader": "^8.2.5",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^7.0.3",
+    "sass-loader": "^13.0.2",
+    "webpack": "^5.74.0",
+    "webpack-bundle-analyzer": "^4.6.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "luxon": "^3.0.3"
+  }
+}
